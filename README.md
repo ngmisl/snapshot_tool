@@ -1,5 +1,5 @@
 # snapshot_tool
-Quick tool to get all NFT holders of a contract via sys.arg
+Quick tool to get all ERC721 NFT holders of a contract via sys.arg
 
 ## Usage
 
