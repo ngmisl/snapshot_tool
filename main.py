@@ -25,7 +25,7 @@ def main():
 
 def total_supply(contract):
     erc721_contract = w3.eth.contract(
-        address=w3.to_checksum_address(contract), abi=erc721_abi
+        address=w3.toChecksumAddress(contract), abi=erc721_abi
     )
     total_supply = erc721_contract.functions.totalSupply().call()
 
