@@ -12,7 +12,7 @@ erc721_abi = erc721_abi
 w3 = Web3(Web3.HTTPProvider("http://34.162.187.208:8545"))
 
 
-@retry(tries=5, delay=5)
+@retry(tries=5, delay=5, backoff=2, jitter=(1, 3), logger=None, exceptions=(Exception,))
 def total_supply(contract):
     erc721_contract = w3.eth.contract(
         address=w3.toChecksumAddress(contract), abi=erc721_abi
