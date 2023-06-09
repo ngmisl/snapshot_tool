@@ -47,7 +47,7 @@ parsimonious==0.8.1
 pathspec==0.11.1
 Pillow==9.5.0
 platformdirs==3.2.0
-polars==0.17.5
+polars==0.18.2
 protobuf==3.19.5
 py==1.11.0
 pyarrow==11.0.0
