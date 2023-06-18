@@ -40,7 +40,7 @@ multidict==6.0.4
 mypy==1.2.0
 mypy-extensions==1.0.0
 netaddr==0.8.0
-numpy==1.24.2
+numpy==1.25.0
 packaging==23.1
 pandas==1.5.3
 parsimonious==0.8.1
