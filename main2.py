@@ -3,12 +3,15 @@ import csv
 import os
 from web3 import Web3
 from standardabi import erc721_abi
-import polars as pl
 
 erc721_abi = erc721_abi
 
 # Make sure to add the correct RPC provider
-w3 = Web3(Web3.HTTPProvider("https://polygon-mainnet.g.alchemy.com/v2/GVWi59Zd_weqiDY_nVNGoE6lU6ZKjvi-"))
+w3 = Web3(
+    Web3.HTTPProvider(
+        ""
+    )
+)
 
 
 def main():
@@ -29,29 +32,28 @@ def total_supply(contract):
     )
     total_supply = erc721_contract.functions.totalSupply().call()
 
-    token_owners = {}
+    token_owners = []
     for i in range(1, total_supply + 1):
-        owner = erc721_contract.functions.ownerOf(i).call()
-        token_owners[i] = owner
+        try:
+            owner = erc721_contract.functions.ownerOf(i).call()
+            if owner not in token_owners:
+                token_owners.append(owner)
+        except Exception as e:
+            print(f"Error at token ID {i}: {str(e)}")
 
     return token_owners
 
 
 def write_to_csv(token_owners, file_name):
     with open(file_name, "w", newline="") as csvfile:
-        fieldnames = ["id", "wallet"]
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-        writer.writeheader()
-        for token_id, wallet in token_owners.items():
-            writer.writerow({"id": token_id, "wallet": wallet})
+        writer = csv.writer(csvfile)
+        for wallet in token_owners:
+            writer.writerow([wallet])
 
 
 def create_clean_snapshot(input_file, output_file):
-    if not os.path.exists(output_file):
-        df = pl.read_csv(input_file)
-        df_clean = df.groupby("wallet").agg(pl.col("id").alias("holdings").count())
-        df_clean.write_csv(output_file)
+    # No need for cleaning since we're only outputting unique wallet addresses
+    pass
 
 
 if __name__ == "__main__":
