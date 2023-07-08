@@ -3,6 +3,9 @@ from unittest.mock import patch
 import main
 
 class TestMainFunctions(unittest.TestCase):
+    # The test_main function is testing the main function from the main module. 
+    # It sets up a mock contract, calls the main function with the mock contract as input, 
+    # and then checks that the output is as expected.
     @patch('main.Web3')
     def test_main(self, mock_web3):
         # Set up test data
@@ -14,6 +17,9 @@ class TestMainFunctions(unittest.TestCase):
         # Compare actual output with expected output using assertEqual
         self.assertEqual(result, 'expected_result')
     
+    # The test_total_supply function is testing the total_supply function from the main module. 
+    # It sets up a mock contract, calls the total_supply function with the mock contract as input, 
+    # and then checks that the output is as expected.
     @patch('main.Web3')
     def test_total_supply(self, mock_web3):
         # Set up test data
@@ -25,6 +31,9 @@ class TestMainFunctions(unittest.TestCase):
         # Compare actual output with expected output using assertEqual
         self.assertEqual(result, 'expected_result')
     
+    # The test_write_to_csv function is testing the write_to_csv function from the main module. 
+    # It sets up some test token owners and a test file name, calls the write_to_csv function 
+    # with the test token owners and file name as input, and then checks that the file was written correctly.
     @patch('main.Web3')
     def test_write_to_csv(self, mock_web3):
         # Set up test data
@@ -39,6 +48,9 @@ class TestMainFunctions(unittest.TestCase):
             content = f.read()
         self.assertEqual(content, 'expected_content')
     
+    # The test_create_clean_snapshot function is testing the create_clean_snapshot function from the main module. 
+    # It sets up a test input file and output file, calls the create_clean_snapshot function 
+    # with the test input file and output file as input, and then checks that the output file was written correctly.
     @patch('main.Web3')
     def test_create_clean_snapshot(self, mock_web3):
         # Set up test data
