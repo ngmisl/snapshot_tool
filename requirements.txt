@@ -16,7 +16,7 @@ decorator==5.1.1
 entrypoints==0.4
 eth-abi==2.2.0
 eth-account==0.5.9
-eth-hash==0.5.1
+eth-hash==0.7.0
 eth-keyfile==0.5.1
 eth-keys==0.3.4
 eth-rlp==0.2.1
